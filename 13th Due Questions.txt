@@ -1,0 +1,696 @@
+Question1:Largest Element in Array
+Given an array A[] of size n. The task is to find the largest element in it.
+ 
+
+Example 1:
+
+Input:
+n = 5
+A[] = {1, 8, 7, 56, 90}
+Output:
+90
+Explanation:
+The largest element of given array is 90.
+ 
+
+Example 2:
+
+Input:
+n = 7
+A[] = {1, 2, 0, 3, 2, 4, 5}
+Output:
+5
+Explanation:
+The largest element of given array is 5.
+ 
+
+Your Task:  
+You don't need to read input or print anything. Your task is to complete the function largest() which takes the array A[] and its size n as inputs and returns the maximum element in the array.
+
+ 
+
+Expected Time Complexity: O(N)
+Expected Auxiliary Space: O(1)
+
+ 
+
+Constraints:
+1 <= n<= 103
+0 <= A[i] <= 103
+Array may contain duplicate elements. 
+
+
+Program:
+//{ Driver Code Starts
+//Initial Template for Java
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main(String[] args) throws IOException
+	{
+	        BufferedReader br =
+            new BufferedReader(new InputStreamReader(System.in));
+        int t =
+            Integer.parseInt(br.readLine().trim()); // Inputting the testcases
+        while(t-->0)
+        {
+            int n = Integer.parseInt(br.readLine().trim());
+            int a[] = new int[n];
+            // long getAnswer[] = new long[(int)(n)];
+            String inputLine[] = br.readLine().trim().split(" ");
+            for (int i = 0; i < n; i++) {
+                a[i] = Integer.parseInt(inputLine[i]);
+            }
+            
+            Compute obj = new Compute();
+            System.out.println(obj.largest(a, n));
+            
+        }
+	}
+}
+
+// } Driver Code Ends
+
+
+//User function Template for Java
+
+class Compute {
+    
+    public int largest(int arr[], int n)
+    {
+        int max =0;
+        for(int i=0;i<n;i++){
+            if(arr[i]>max){
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+}
+
+
+Question2:
+Find minimum and maximum element in an array
+Given an array A of size N of integers. Your task is to find the minimum and maximum elements in the array.
+
+ 
+
+Example 1:
+
+Input:
+N = 6
+A[] = {3, 2, 1, 56, 10000, 167}
+Output:
+min = 1, max =  10000
+ 
+
+Example 2:
+
+Input:
+N = 5
+A[]  = {1, 345, 234, 21, 56789}
+Output:
+min = 1, max = 56789
+ 
+
+Your Task:  
+You don't need to read input or print anything. Your task is to complete the function getMinMax() which takes the array A[] and its size N as inputs and returns the minimum and maximum element of the array.
+
+ 
+
+Expected Time Complexity: O(N)
+Expected Auxiliary Space: O(1)
+
+ 
+
+Constraints:
+1 <= N <= 105
+1 <= Ai <=1012
+
+Program:
+
+//{ Driver Code Starts
+//Initial Template for Java
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Pair  
+{  
+    long first, second;  
+    public Pair(long first, long second)  
+    {  
+        this.first = first;  
+        this.second = second;  
+    }  
+}
+
+class GFG {
+	public static void main(String[] args) throws IOException
+	{
+	        BufferedReader br =
+            new BufferedReader(new InputStreamReader(System.in));
+        int t =
+            Integer.parseInt(br.readLine().trim()); // Inputting the testcases
+        while(t-->0)
+        {
+            long n = Long.parseLong(br.readLine().trim());
+            long a[] = new long[(int)(n)];
+            // long getAnswer[] = new long[(int)(n)];
+            String inputLine[] = br.readLine().trim().split(" ");
+            for (int i = 0; i < n; i++) {
+                a[i] = Long.parseLong(inputLine[i]);
+            }
+            
+            Compute obj = new Compute();
+            Pair product = obj.getMinMax(a, n); 
+            System.out.println(product.first+" "+product.second);
+            
+        }
+	}
+}
+
+
+// } Driver Code Ends
+
+
+//User function Template for Java
+
+/*
+ class Pair  
+{  
+    long first, second;  
+    public Pair(long first, long second)  
+    {  
+        this.first = first;  
+        this.second = second;  
+    }  
+} */
+
+class Compute 
+{
+    static Pair getMinMax(long a[], long n)  
+    {
+        //Write your code here
+        long min  = a[0];
+        long max = a[0];
+        for(int i=0;i<n;i++){
+            if(a[i]>max){
+                max = a[i];
+            }
+            if(a[i]<min){
+                min = a[i];
+            }
+        }
+        return new Pair(min,max);
+    }
+}
+
+Question3:
+First and last occurrences of x
+
+Given a sorted array arr containing n elements with possibly duplicate elements, the task is to find indexes of first and last occurrences of an element x in the given array.
+
+Example 1:
+
+Input:
+n=9, x=5
+arr[] = { 1, 3, 5, 5, 5, 5, 67, 123, 125 }
+Output:  2 5
+Explanation: First occurrence of 5 is at index 2 and last
+             occurrence of 5 is at index 5. 
+ 
+
+Example 2:
+
+Input:
+n=9, x=7
+arr[] = { 1, 3, 5, 5, 5, 5, 7, 123, 125 }
+Output:  6 6 
+
+Your Task:
+Since, this is a function problem. You don't need to take any input, as it is already accomplished by the driver code. You just need to complete the function find() that takes array arr, integer n and integer x as parameters and returns the required answer.
+Note: If the number x is not found in the array just return both index as -1.
+
+ 
+
+Expected Time Complexity: O(logN)
+Expected Auxiliary Space: O(1).
+
+ 
+
+Constraints:
+1 ≤ N ≤ 107
+
+Program:
+//{ Driver Code Starts
+//Initial Template for Java
+
+
+
+import java.io.*;
+import java.util.*;
+
+
+// } Driver Code Ends
+//User function Template for Java
+
+
+class GFG
+{
+    ArrayList<Long> find(long arr[], int n, int x)
+    {
+        // code here
+        long min=-1;
+        long max =-1;
+        for(int i=0;i<n;i++){
+            if(arr[i]==x){
+                min+=i+1;
+                break;
+            }
+        }
+        for(int j=n-1;j>-1;j--){
+            if(arr[j]==x){
+                max += j+1;
+                break;
+            }
+        }
+        ArrayList<Long> al = new ArrayList<>();
+        al.add(min);
+        al.add(max);
+        return al;
+        // if(min==0){
+        //     al.add((long)-1);
+        // }
+        // else{
+        //     al.add(min);
+        // }
+        // if(max ==0){
+        //     al.add((long)-1);
+        // }
+        // else{
+        //     al.add(max);
+        // }
+       
+        // return al;
+    }
+}
+
+
+
+//{ Driver Code Starts.
+
+// Driver class
+class Array {
+
+    // Driver code
+    public static void main(String[] args) throws IOException {
+        // Taking input using buffered reader
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int testcases = Integer.parseInt(br.readLine());
+        // looping through all testcases
+        while (testcases-- > 0) {
+//            int n = Integer.parseInt(br.readLine());
+            String line = br.readLine();
+            String[] q = line.trim().split("\\s+");
+            int n =Integer.parseInt(q[0]);
+            int x =Integer.parseInt(q[1]);
+//            //int y =Integer.parseInt(q[2]);
+            String line1 = br.readLine();
+            String[] a1 = line1.trim().split("\\s+");
+            long arr[] = new long[n];
+            for (int i = 0; i < n; i++) {
+                arr[i] = Long.parseLong(a1[i]);
+            }
+            GFG ob = new GFG();
+            ArrayList<Long> ans=ob.find(arr,n,x);
+            System.out.println(ans.get(0)+" "+ans.get(1));
+        }
+    }
+}
+
+// } Driver Code Ends
+
+Question4:
+Search an Element in an array
+
+
+Given an integer array and another integer element. The task is to find if the given element is present in array or not.
+
+Example 1:
+
+Input:
+n = 4
+arr[] = {1,2,3,4}
+x = 3
+Output: 2
+Explanation: There is one test case 
+with array as {1, 2, 3 4} and element 
+to be searched as 3.  Since 3 is 
+present at index 2, output is 2.
+Example 2:
+
+Input:
+n = 5
+arr[] = {1,2,3,4,5}
+x = 5
+Output: 4
+Explanation: For array elements 
+{1,2,3,4,5} element to be searched 
+is 5 and it is at index 4. So, the 
+output is 4.
+Your Task:
+The task is to complete the function search() which takes the array arr[], its size N and the element X as inputs and returns the index of first occurrence of X in the given array. If the element X does not exist in the array, the function should return -1.
+
+Expected Time Complexity: O(n).
+Expected Auxiliary Space: O(1). 
+
+Constraints:
+1 <= n <= 106
+0 <= arr[i] <= 106
+0 <= x <= 105
+
+Program:
+//{ Driver Code Starts
+import java.util.*;
+import java.io.*;
+import java.lang.*;
+
+class Main
+{
+    public static void main(String args[])throws IOException
+    {
+        BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(read.readLine());
+        
+        while(t-- > 0)
+        {
+            int sizeOfArray = Integer.parseInt(read.readLine());
+            int arr[] = new int[sizeOfArray];
+            
+            String st[] = read.readLine().trim().split("\\s+");
+            for(int i = 0; i < sizeOfArray; i++)
+              arr[i] = Integer.parseInt(st[i]);
+              
+            int x = Integer.parseInt(read.readLine());
+            
+            Solution obj = new Solution();
+            
+            System.out.println(obj.search(arr, sizeOfArray, x));
+        }
+    }
+}
+// } Driver Code Ends
+
+
+class Solution{
+        
+    static int search(int arr[], int N, int X)
+    {
+        
+        // Your code here
+        for(int i=0;i<N;i++){
+            if(arr[i]==X){
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+}
+
+Question5:
+Second Largest
+
+Given an array Arr of size N, print second largest distinct element from an array.
+
+Example 1:
+
+Input: 
+N = 6
+Arr[] = {12, 35, 1, 10, 34, 1}
+Output: 34
+Explanation: The largest element of the 
+array is 35 and the second largest element
+is 34.
+Example 2:
+
+Input: 
+N = 3
+Arr[] = {10, 5, 10}
+Output: 5
+Explanation: The largest element of 
+the array is 10 and the second 
+largest element is 5.
+Your Task:
+You don't need to read input or print anything. Your task is to complete the function print2largest() which takes the array of integers arr and n as parameters and returns an integer denoting the answer. If 2nd largest element doesn't exist then return -1.
+
+Expected Time Complexity: O(N)
+Expected Auxiliary Space: O(1)
+
+Constraints:
+2 ≤ N ≤ 105
+1 ≤ Arri ≤ 105
+
+Program:
+
+//{ Driver Code Starts
+//Initial Template for Java
+
+
+
+
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int tc = Integer.parseInt(br.readLine().trim());
+        while (tc-- > 0) {
+            String[] inputLine;
+            int n = Integer.parseInt(br.readLine().trim());
+            int[] arr = new int[n];
+            inputLine = br.readLine().trim().split(" ");
+            for (int i = 0; i < n; i++) {
+                arr[i] = Integer.parseInt(inputLine[i]);
+            }
+
+            int ans = new Solution().print2largest(arr, n);
+            System.out.println(ans);
+        }
+    }
+}
+
+// } Driver Code Ends
+
+
+//User function Template for Java
+class Solution {
+    int print2largest(int arr[], int n) {
+        // code here
+        int max = arr[0];
+        int max2=-1;
+        for(int i=0;i<n;i++){
+            if(arr[i]>max){
+                max = arr[i];
+            }
+        }
+        for(int j=0;j<n;j++){
+            if(arr[j]>max2 && arr[j]!=max){
+                max2 = arr[j];
+            }
+        }
+        if (max==max2){
+            return -1;
+        }
+        else{
+            return max2;
+        }
+    }
+}
+
+Question6:
+Max Min
+Problem Description
+
+Given an array A of size N. You need to find the sum of Maximum and Minimum element in the given array.
+
+NOTE: You should make minimum number of comparisons.
+
+
+
+Problem Constraints
+1 <= N <= 105
+
+-109 <= A[i] <= 109
+
+
+
+Input Format
+First and only argument is an integer array A of size N.
+
+
+
+Output Format
+Return an integer denoting the sum Maximum and Minimum element in the given array.
+
+
+
+Example Input
+Input 1:
+
+ A = [-2, 1, -4, 5, 3]
+Input 2:
+
+ A = [1, 3, 4, 1]
+
+
+Example Output
+Output 1:
+
+ 1
+Output 2:
+
+ 5
+
+
+Example Explanation
+Explanation 1:
+
+ Maximum Element is 5 and Minimum element is -4. (5 + (-4)) = 1. 
+Explanation 2:
+
+ Maximum Element is 4 and Minimum element is 1. (4 + 1) = 5.
+
+Program:
+public class Solution {
+    public int solve(int[] A) {
+        int min = A[0];
+        int max =A[0];
+        for(int i=0;i<A.length;i++){
+            if(A[i]>max){
+                max = A[i];
+            }
+            if(A[i]<min){
+                min = A[i];
+            }
+        }
+        return min+max;
+    }
+}
+
+
+Question7:
+
+At least two greater elements
+
+
+Given an array of N distinct elements, the task is to find all elements in array except two greatest elements in sorted order.
+
+
+Example 1:
+
+Input : 
+a[] = {2, 8, 7, 1, 5}
+Output :
+1 2 5 
+Explanation :
+The output three elements have two or
+more greater elements.   
+Example 2:
+
+Input :
+a[] = {7, -2, 3, 4, 9, -1}
+Output :
+-2 -1 3 4
+
+Your Task:  
+You don't need to read input or print anything. Your task is to complete the function findElements() which takes the array A[] and its size N as inputs and return the vector sorted values denoting the elements in array which have at-least two greater elements than themselves.
+
+Expected Time Complexity: O(N*Log(N))
+Expected Auxiliary Space: O(N)
+
+Constraints:
+3 ≤ N ≤ 105
+-106 ≤ Ai ≤ 106
+
+Program:
+//{ Driver Code Starts
+//Initial Template for Java
+
+//Initial Template for Java
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+class GFG {
+	public static void main(String[] args) throws IOException
+	{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine().trim());
+        while(t-->0)
+        {
+            
+            long n = Integer.parseInt(br.readLine().trim());
+            long a[] = new long[(int)(n)];
+            
+            String inputLine[] = br.readLine().trim().split(" ");
+            for (int i = 0; i < n; i++) {
+                a[i] = Long.parseLong(inputLine[i]);
+            }
+            
+            Solution obj = new Solution();
+            long answer[] = obj.findElements( a, n);
+            long sz = answer.length;
+            
+            StringBuilder output = new StringBuilder();
+            for(int i=0;i<sz;i++)
+            output.append(answer[i]+" ");
+            System.out.println(output);
+            
+        }
+	}
+}
+
+// } Driver Code Ends
+
+
+//User function Template for Java
+
+class Solution {
+    public long[] findElements( long a[], long n)
+    {
+        // Your code goes here
+        Arrays.sort(a);
+        long max = a[0];
+        long max2=-1;
+        long arr2[] = new long[a.length-2];
+        for(int i=0;i<n;i++){
+            if(a[i]>max){
+                max = a[i];
+            }
+        }
+        for(int j=0;j<n;j++){
+            if(a[j]>max2 && a[j]!=max){
+                max2 = a[j];
+            }
+        }
+        int z = 0;
+        for(int i=0;i<arr2.length;i++){
+            if(a[i]!=max && a[i]!=max2){
+                arr2[z]=a[i];
+                z++;
+            }
+        }
+        return arr2;
+    }
+}
